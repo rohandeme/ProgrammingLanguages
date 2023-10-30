@@ -11,7 +11,7 @@ end = struct
         let val mapping = List.find (fn (abbr, term) => abbr = s) abbvs
         in
           case mapping of 
-            SOME (abbr, term) => term
+            SOME (abbr, term) => unroll (S.Prog (abbvs, term))
             | NONE => raise Fail "Abreviation not in list"
         end
       | unroll (S.Prog (abbvs, x)) = x
