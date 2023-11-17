@@ -28,14 +28,14 @@ end = struct
           
           fun recordSubtype typePairs1 typePairs2 =
             let
-              val widthOK = List.all (fn (label, _) => List.exists (fn (l, _) => l = label) typePairs1) typePairs2
-              val depthOK = List.all (fn (label, typ2) =>
+              val width = List.all (fn (label, _) => List.exists (fn (l, _) => l = label) typePairs1) typePairs2
+              val depth = List.all (fn (label, typ2) =>
                 case findPairWithLabel(label, typePairs1) of
                   SOME typ1 => subty (typ1, typ2)
                 | NONE => false
               ) typePairs2
             in
-              widthOK andalso depthOK
+              width andalso depth
             end
         in
           recordSubtype typePairs1 typePairs2
